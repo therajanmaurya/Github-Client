@@ -6,11 +6,11 @@ android {
     buildToolsVersion "25.0.1"
     defaultConfig {
         applicationId "opensource.github.android.client"
-        minSdkVersion 15
-        targetSdkVersion 25
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        testInstrumentationRunner "${applicationId}.runner.RxAndroidJUnitRunner"
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
