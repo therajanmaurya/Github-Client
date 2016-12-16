@@ -5,4 +5,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string name="hint_sign_in">GitHub User Name</string>
+    <string name="sign_in">Sign In</string>
 </resources>

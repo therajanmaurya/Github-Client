@@ -9,6 +9,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import opensource.github.android.client.BuildConfig;
 import opensource.github.android.client.data.GitHubInterceptor;
+import opensource.github.android.client.data.GitHubService;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -21,13 +22,14 @@ public class BaseApiManager {
     public static final String END_POINT = "https://api.github.com";
 
     private static Retrofit mRetrofit;
+    private static GitHubService mGithubService;
 
     public BaseApiManager() {
         createService();
     }
 
     public static void init() {
-
+        mGithubService = createApi(GitHubService.class);
     }
 
     private static <T> T createApi(Class<T> clazz) {
@@ -58,5 +60,9 @@ public class BaseApiManager {
                 .client(okHttpClient)
                 .build();
         init();
+    }
+
+    public GitHubService getGitHubApi() {
+        return mGithubService;
     }
 }
