@@ -8,4 +8,5 @@
 
     <string name="hint_sign_in">GitHub User Name</string>
     <string name="sign_in">Sign In</string>
+    <string name="user">User</string>
 </resources>
