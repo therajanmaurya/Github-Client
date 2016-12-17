@@ -24,6 +24,6 @@ public interface RepositoryContacts {
 
     interface Presenter {
 
-        void loadRepository(String userName);
+        void loadRepository(String userName, int page);
     }
 }

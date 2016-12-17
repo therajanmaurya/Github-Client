@@ -40,10 +40,10 @@ public class RepositoryPresenter extends BasePresenter<RepositoryContacts.View>
     }
 
     @Override
-    public void loadRepository(String userName) {
+    public void loadRepository(String userName, int page) {
         checkViewAttached();
         getMvpView().showProgressBar(true);
-        subscriptions.add(dataManager.getUserRepository(userName, 1)
+        subscriptions.add(dataManager.getUserRepository(userName, page)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<List<Repository>>() {

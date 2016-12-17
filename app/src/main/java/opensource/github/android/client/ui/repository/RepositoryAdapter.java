@@ -50,7 +50,8 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
     }
 
     public void setRepositories(List<Repository> repositories) {
-        this.repositories = repositories;
+        this.repositories.addAll(repositories);
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

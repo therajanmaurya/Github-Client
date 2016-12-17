@@ -18,9 +18,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import opensource.github.android.client.R;
 import opensource.github.android.client.data.models.Repository;
+import opensource.github.android.client.ui.base.EndlessRecyclerViewScrollListener;
 import opensource.github.android.client.ui.base.GitHubBaseActivity;
 import opensource.github.android.client.ui.base.GitHubBaseFragment;
 import opensource.github.android.client.ui.base.RecyclerItemClickListener;
+import opensource.github.android.client.utils.Constants;
 
 /**
  * Created by Rajan Maurya on 17/12/16.
@@ -42,6 +44,8 @@ public class RepositoryFragment extends GitHubBaseFragment implements Repository
     RepositoryPresenter repositoryPresenter;
 
     private View view;
+    private String userName;
+    private LinearLayoutManager layoutManager;
 
     @Override
     public void onItemClick(View childView, int position) {
@@ -53,10 +57,21 @@ public class RepositoryFragment extends GitHubBaseFragment implements Repository
 
     }
 
+    public static RepositoryFragment newInstance(String userName) {
+        Bundle arguments = new Bundle();
+        RepositoryFragment fragment = new RepositoryFragment();
+        arguments.putString(Constants.USER_NAME, userName);
+        fragment.setArguments(arguments);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((GitHubBaseActivity) getActivity()).activityComponent().inject(this);
+        if (getArguments() != null) {
+            userName = getArguments().getString(Constants.USER_NAME, userName);
+        }
     }
 
     @Override
@@ -65,12 +80,21 @@ public class RepositoryFragment extends GitHubBaseFragment implements Repository
         view = inflater.inflate(R.layout.fragment_repository, container, false);
         ButterKnife.bind(this, view);
         repositoryPresenter.attachView(this);
+        showUserInterface();
+        repositoryPresenter.loadRepository(userName, 1);
+
+        rv_repository.addOnScrollListener(new EndlessRecyclerViewScrollListener(layoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount) {
+                repositoryPresenter.loadRepository(userName, page);
+            }
+        });
         return view;
     }
 
     @Override
     public void showUserInterface() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rv_repository.setLayoutManager(layoutManager);
         rv_repository.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), this));
@@ -83,7 +107,7 @@ public class RepositoryFragment extends GitHubBaseFragment implements Repository
 
     @Override
     public void onRefresh() {
-
+        repositoryPresenter.loadRepository(userName, 1);
     }
 
     @Override

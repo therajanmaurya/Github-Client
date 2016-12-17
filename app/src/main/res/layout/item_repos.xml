@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <ImageView
@@ -31,11 +31,14 @@
 
     <TextView
         android:id="@+id/tv_repo_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_repo_name"
         android:layout_alignBottom="@+id/iv_user_profile"
         android:layout_alignLeft="@+id/tv_repo_name"
         android:layout_alignStart="@+id/tv_repo_name"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit ="marquee_forever"
         android:text="@string/repo_description"/>
 
     <View
@@ -43,7 +46,7 @@
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"
         android:id="@+id/view2"
-        android:layout_below="@+id/iv_user_profile"
+        android:layout_below="@+id/tv_repo_description"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="120dp"
