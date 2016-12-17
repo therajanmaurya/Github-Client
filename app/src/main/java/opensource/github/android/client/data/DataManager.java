@@ -1,11 +1,15 @@
 package opensource.github.android.client.data;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import opensource.github.android.client.data.local.DatabaseHelper;
 import opensource.github.android.client.data.local.PreferencesHelper;
+import opensource.github.android.client.data.models.Repository;
 import opensource.github.android.client.data.remote.BaseApiManager;
+import rx.Observable;
 
 /**
  * Created by Rajan Maurya on 16/12/16.
@@ -27,5 +31,9 @@ public class DataManager {
 
     public PreferencesHelper getPreferencesHelper() {
         return mPreferencesHelper;
+    }
+
+    public Observable<List<Repository>> getUserRepository(String userName, int page) {
+        return mBaseApiManager.getGitHubApi().getUserRepos(userName, page);
     }
 }

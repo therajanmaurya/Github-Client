@@ -9,4 +9,7 @@
     <string name="hint_sign_in">GitHub User Name</string>
     <string name="sign_in">Sign In</string>
     <string name="user">User</string>
+    <string name="error_fetching_user_repos">Error fetching User Repos</string>
+    <string name="repo_title">Repo Title</string>
+    <string name="repo_description">Repo Description</string>
 </resources>

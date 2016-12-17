@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class BaseApiManager {
 
-    public static final String END_POINT = "https://api.github.com";
+    public static final String END_POINT = "https://api.github.com/";
 
     private static Retrofit mRetrofit;
     private static GitHubService mGithubService;
