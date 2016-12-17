@@ -56,6 +56,7 @@ public class RepositoryPresenter extends BasePresenter<RepositoryContacts.View>
                     public void onError(Throwable e) {
                         getMvpView().showError(R.string.error_fetching_user_repos);
                         getMvpView().showProgressBar(false);
+                        throw new RuntimeException(e);
                     }
 
                     @Override

@@ -95,7 +95,7 @@ public class RepositoryFragment extends GitHubBaseFragment implements Repository
         rv_repository.addOnScrollListener(new EndlessRecyclerViewScrollListener(layoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {
-                repositoryPresenter.loadRepository(userName, page);
+                //repositoryPresenter.loadRepository(userName, page);
             }
         });
         return view;

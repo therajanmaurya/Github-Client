@@ -57,23 +57,26 @@
 
         <Button
             android:id="@+id/btn_sign_in"
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/card_view"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="174dp"
+            android:textColor="@color/white"
+            android:background="@drawable/round_button"
             android:text="@string/sign_in"/>
 
     </RelativeLayout>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:id="@+id/btn_user"
+        android:textColor="@color/white"
+        android:background="@drawable/round_button"
         android:layout_marginBottom="176dp"
-        android:layout_alignParentBottom="true"
         android:text="@string/user"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>

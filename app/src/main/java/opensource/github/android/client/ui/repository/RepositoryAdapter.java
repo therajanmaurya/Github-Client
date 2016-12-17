@@ -40,7 +40,7 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Repository repository = repositories.get(position);
-        holder.tv_repo_title.setText(repository.getFullName());
+        holder.tv_repo_title.setText(repository.getName());
         holder.tv_repo_description.setText(repository.getDescription());
     }
 
