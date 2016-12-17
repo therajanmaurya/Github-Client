@@ -1,5 +1,6 @@
 package opensource.github.android.client.ui.repository;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -10,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -18,6 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import opensource.github.android.client.R;
 import opensource.github.android.client.data.models.Repository;
+import opensource.github.android.client.ui.DetailRepositoryActivity;
 import opensource.github.android.client.ui.base.EndlessRecyclerViewScrollListener;
 import opensource.github.android.client.ui.base.GitHubBaseActivity;
 import opensource.github.android.client.ui.base.GitHubBaseFragment;
@@ -46,10 +51,13 @@ public class RepositoryFragment extends GitHubBaseFragment implements Repository
     private View view;
     private String userName;
     private LinearLayoutManager layoutManager;
+    private List<Repository> repositoryList;
 
     @Override
     public void onItemClick(View childView, int position) {
-
+        Intent intent = new Intent(getActivity(), DetailRepositoryActivity.class);
+        intent.putExtra(Constants.RESPOSITORY, (new Gson()).toJson(repositoryList.get(position)));
+        startActivity(intent);
     }
 
     @Override
@@ -69,6 +77,7 @@ public class RepositoryFragment extends GitHubBaseFragment implements Repository
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((GitHubBaseActivity) getActivity()).activityComponent().inject(this);
+        repositoryList = new ArrayList<>();
         if (getArguments() != null) {
             userName = getArguments().getString(Constants.USER_NAME, userName);
         }
@@ -112,6 +121,7 @@ public class RepositoryFragment extends GitHubBaseFragment implements Repository
 
     @Override
     public void showRepository(List<Repository> repository) {
+        this.repositoryList.addAll(repository);
         repositoryAdapter.setRepositories(repository);
     }
 

@@ -7,4 +7,6 @@ package opensource.github.android.client.utils;
 public class Constants {
 
     public static final String USER_NAME = "user_name";
+
+    public static final String RESPOSITORY = "repository";
 }
