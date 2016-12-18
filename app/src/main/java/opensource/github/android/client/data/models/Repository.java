@@ -44,6 +44,17 @@ public class Repository implements Parcelable {
     @SerializedName("watchers")
     Integer watchers;
 
+    @SerializedName("stargazers_count")
+    Integer starCount;
+
+    public Integer getStarCount() {
+        return starCount;
+    }
+
+    public void setStarCount(Integer starCount) {
+        this.starCount = starCount;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -132,6 +143,10 @@ public class Repository implements Parcelable {
         this.watchers = watchers;
     }
 
+
+    public Repository() {
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -150,9 +165,7 @@ public class Repository implements Parcelable {
         dest.writeValue(this.forksCount);
         dest.writeValue(this.forks);
         dest.writeValue(this.watchers);
-    }
-
-    public Repository() {
+        dest.writeValue(this.starCount);
     }
 
     protected Repository(Parcel in) {
@@ -167,18 +180,18 @@ public class Repository implements Parcelable {
         this.forksCount = (Integer) in.readValue(Integer.class.getClassLoader());
         this.forks = (Integer) in.readValue(Integer.class.getClassLoader());
         this.watchers = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.starCount = (Integer) in.readValue(Integer.class.getClassLoader());
     }
 
-    public static final Parcelable.Creator<Repository> CREATOR =
-            new Parcelable.Creator<Repository>() {
-                @Override
-                public Repository createFromParcel(Parcel source) {
-                    return new Repository(source);
-                }
+    public static final Creator<Repository> CREATOR = new Creator<Repository>() {
+        @Override
+        public Repository createFromParcel(Parcel source) {
+            return new Repository(source);
+        }
 
-                @Override
-                public Repository[] newArray(int size) {
-                    return new Repository[size];
-                }
-            };
+        @Override
+        public Repository[] newArray(int size) {
+            return new Repository[size];
+        }
+    };
 }

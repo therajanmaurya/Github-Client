@@ -12,4 +12,8 @@
     <string name="error_fetching_user_repos">Error fetching User Repos</string>
     <string name="repo_title">Repo Title</string>
     <string name="repo_description">Repo Description</string>
+    <string name="owner">Owner</string>
+    <string name="owner_id">Id</string>
+    <string name="count">0</string>
+
 </resources>
