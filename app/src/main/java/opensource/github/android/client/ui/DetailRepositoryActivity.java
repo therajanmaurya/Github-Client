@@ -2,6 +2,7 @@ package opensource.github.android.client.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -56,5 +57,16 @@ public class DetailRepositoryActivity extends GitHubBaseActivity {
 
         Picasso.with(this).load(repository.getOwner().getAvatarUrl()).resize(45, 45).centerCrop().into(profileImage);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                supportFinishAfterTransition();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

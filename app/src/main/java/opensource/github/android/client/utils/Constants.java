@@ -11,4 +11,6 @@ public class Constants {
     public static final String RESPOSITORY = "repository";
 
     public static final String ANIMATION_PROFILE = "profile";
+
+    public static final String ANIMATION_USER_PROFILE = "user_profile";
 }
