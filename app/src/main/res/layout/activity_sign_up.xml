@@ -64,6 +64,7 @@
             android:layout_marginTop="174dp"
             android:textColor="@color/white"
             android:background="@drawable/round_button"
+            android:transitionName="profile"
             android:text="@string/sign_in"/>
 
     </RelativeLayout>

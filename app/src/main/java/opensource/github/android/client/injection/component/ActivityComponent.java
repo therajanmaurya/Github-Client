@@ -3,7 +3,7 @@ package opensource.github.android.client.injection.component;
 import dagger.Subcomponent;
 import opensource.github.android.client.injection.PerActivity;
 import opensource.github.android.client.injection.module.ActivityModule;
-import opensource.github.android.client.ui.repository.RepositoryFragment;
+import opensource.github.android.client.ui.repository.RepositoryActivity;
 
 
 /**
@@ -13,5 +13,5 @@ import opensource.github.android.client.ui.repository.RepositoryFragment;
 @Subcomponent(modules = ActivityModule.class)
 public interface ActivityComponent {
 
-    void inject(RepositoryFragment repositoryFragment);
+    void inject(RepositoryActivity repositoryFragment);
 }

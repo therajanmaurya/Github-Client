@@ -3,6 +3,7 @@ package opensource.github.android.client.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -44,6 +45,8 @@ public class SignUpActivity extends GitHubBaseActivity {
     public void onClickSignIn() {
         Intent repository = new Intent(this, RepositoryActivity.class);
         repository.putExtra(Constants.USER_NAME, et_user.getText().toString());
-        startActivity(repository);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
+                findViewById(R.id.btn_sign_in), Constants.ANIMATION_PROFILE);
+        startActivity(repository, options.toBundle());
     }
 }
