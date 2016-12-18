@@ -65,6 +65,7 @@
             android:textColor="@color/white"
             android:background="@drawable/round_button"
             android:transitionName="profile"
+            android:visibility="gone"
             android:text="@string/sign_in"/>
 
     </RelativeLayout>
