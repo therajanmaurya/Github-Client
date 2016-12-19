@@ -20,7 +20,7 @@ import opensource.github.android.client.utils.Constants;
  * Created by Rajan Maurya on 17/12/16.
  */
 
-public class DetailRepositoryActivity extends GitHubBaseActivity {
+public class DetailRepositoryFragment extends GitHubBaseActivity {
 
     @BindView(R.id.profileImageView)
     ImageView profileImage;
