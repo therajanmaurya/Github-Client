@@ -8,15 +8,15 @@ This is the application which have the following features:
    
    Used animated transitions similar to the attached GIF image and Video 
    
-   <table>
-  <tr>
-    <td><img width= "375" src="https://raw.githubusercontent.com/therajanmaurya/Github-Client/master/screenshot/preview.gif.png"></td>
-    <td><Video width= "375" src="https://raw.githubusercontent.com/therajanmaurya/Github-Client/master/screenshot/demoVideo.png"></td>
-  </tr>
+   [](http://i.imgur.com/Ssfp7.gif)
+<table>
+ <tr>
+    <td><img width= "375" src="https://raw.githubusercontent.com/therajanmaurya/Github-Client/master/screenshot/preview.gif">
+    </td>
 </table>
-   
-   <td><img width= "375" src="https://raw.githubusercontent.com/therajanmaurya/Github-Client/master/screenshot/preview.gif.png"></td>
-   
+[![ScreenShot] width ="375"(https://raw.githubusercontent.com/therajanmaurya/Github-Client/master/screenshot/signup_screen.png)](https://youtu.be/sJWxN85qzPc)
+  
+  
 ##Screenshots
 <table>
   <tr>
