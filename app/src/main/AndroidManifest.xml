@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.DetailRepositoryActivity"
+        <activity android:name=".ui.DetailRepositoryFragment"
                   android:theme="@style/AppTheme"/>
 
     </application>

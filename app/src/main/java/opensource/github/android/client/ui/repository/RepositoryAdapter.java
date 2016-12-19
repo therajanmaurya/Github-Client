@@ -1,5 +1,6 @@
 package opensource.github.android.client.ui.repository;
 
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +25,6 @@ import opensource.github.android.client.data.models.Repository;
 public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.ViewHolder> {
 
     private List<Repository> repositories;
-    private ItemClick mItemClick;
 
     @Inject
     public RepositoryAdapter() {
@@ -42,15 +42,10 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         Repository repository = repositories.get(position);
-        final ImageView iv_user_profile = holder.iv_user_profile;
         holder.tv_repo_title.setText(repository.getName());
         holder.tv_repo_description.setText(repository.getDescription());
-        holder.ll_repo_item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mItemClick.onItemClick(position, iv_user_profile);
-            }
-        });
+
+        ViewCompat.setTransitionName(holder.iv_user_profile, String.valueOf(position) + "_image");
     }
 
     @Override
@@ -61,10 +56,6 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
     public void setRepositories(List<Repository> repositories) {
         this.repositories.addAll(repositories);
         notifyDataSetChanged();
-    }
-
-    public void setItemClick(ItemClick itemClick) {
-        mItemClick = itemClick;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -85,9 +76,5 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
             super(v);
             ButterKnife.bind(this, v);
         }
-    }
-
-    public interface ItemClick {
-        void onItemClick(int position, ImageView imageView);
     }
 }
