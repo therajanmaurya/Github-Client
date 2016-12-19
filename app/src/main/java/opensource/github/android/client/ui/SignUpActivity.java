@@ -9,7 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.CardView;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -28,7 +28,7 @@ import opensource.github.android.client.utils.Constants;
  * Created by Rajan Maurya on 16/12/16.
  */
 
-public class SignUpActivity extends GitHubBaseActivity {
+public class SignUpActivity extends GitHubBaseActivity implements Animation.AnimationListener {
 
     @BindView(R.id.rl_sign_up)
     RelativeLayout rl_sign_in;
@@ -60,28 +60,7 @@ public class SignUpActivity extends GitHubBaseActivity {
         animation.setFillAfter(true);
         cv_sign_in.startAnimation(animation);
         cv_sign_in.setVisibility(View.VISIBLE);
-
-        animation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                ObjectAnimator flipanimation = ObjectAnimator.ofFloat(btn_sign_in, "rotationY", 0.0f, 360f);
-                flipanimation.setDuration(500);
-                flipanimation.setRepeatCount(1);
-                flipanimation.setInterpolator(new AccelerateDecelerateInterpolator());
-                flipanimation.start();
-                btn_sign_in.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
+        animation.setAnimationListener(this);
 
     }
 
@@ -94,4 +73,23 @@ public class SignUpActivity extends GitHubBaseActivity {
         startActivity(repository, options.toBundle());
     }
 
+    @Override
+    public void onAnimationStart(Animation animation) {
+
+    }
+
+    @Override
+    public void onAnimationEnd(Animation animation) {
+        ObjectAnimator flipanimation = ObjectAnimator.ofFloat(btn_sign_in, "rotationY", -180f, 0f);
+        flipanimation.setDuration(300);
+        flipanimation.setInterpolator(new AccelerateInterpolator());
+        flipanimation.start();
+        btn_sign_in.setVisibility(View.VISIBLE);
+        btn_sign_in.setText(getString(R.string.sign_in));
+    }
+
+    @Override
+    public void onAnimationRepeat(Animation animation) {
+
+    }
 }

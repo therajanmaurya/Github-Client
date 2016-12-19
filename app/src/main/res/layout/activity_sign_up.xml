@@ -65,8 +65,7 @@
             android:textColor="@color/white"
             android:background="@drawable/round_button"
             android:transitionName="profile"
-            android:visibility="gone"
-            android:text="@string/sign_in"/>
+            android:visibility="gone"/>
 
     </RelativeLayout>
 
@@ -78,6 +77,7 @@
         android:background="@drawable/round_button"
         android:layout_marginBottom="176dp"
         android:text="@string/user"
+        android:visibility="visible"
         android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
 
 
